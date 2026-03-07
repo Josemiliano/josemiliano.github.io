@@ -1,3 +1,3 @@
 # josemiliano.github.io
-Personal Webiste
+Personal website  
 josemiliano.com
