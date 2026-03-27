@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -800,6 +800,32 @@
             font-weight: bold;
         }
 
+        .experience-feature {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(320px, 400px);
+            gap: 2rem;
+            align-items: start;
+            margin-top: 3rem;
+        }
+
+        .experience-feature .timeline {
+            margin-top: 0;
+        }
+
+        .experience-feature .timeline-item {
+            margin-bottom: 0;
+        }
+
+        .experience-side-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            justify-self: start;
+            object-fit: cover;
+        }
+
         .sports-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -951,6 +977,10 @@
             .timeline-item::before {
                 left: -2.75rem;
             }
+
+            .experience-feature {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -999,17 +1029,17 @@
                 <div class="education-details">
                     <ul>
                         <li>Technical Core: Embedded Systems and Computer Architecture</li>
-                        <li>Organizations: UT SHPE, Longhorn Boxing</li>
+                        <li>Organizations: Texas Robotics <span style="font-size:0.85em; color:var(--primary);">(Research Mentor)</span>, UT SHPE <span style="font-size:0.85em; color:var(--primary);">(Intramural Sports Chair)</span>, IEEE <span style="font-size:0.85em; color:var(--primary);">(Member)</span>, Longhorn Boxing <span style="font-size:0.85em; color:var(--primary);">(Board)</span></li>
                     </ul>
                 </div>
             </div>
 
             <div class="education-card">
                 <h3>El Paso Community College</h3>
-                <p class="degree">Associate's Degree - Multidisciplinary Studies</p>
+                <p class="degree">Associate of Arts: Multidisciplinary Studies</p>
                 <p class="year">Aug 2020 – May 2023</p>
                 <div class="education-details">
-                    <p>Pursued high school and Associate's degree simultaneously, graduated high school with 60+ college credits</p>
+                    <p>Pursued High School and Associate's degree simultaneously, graduated high school with 60+ college credits</p>
                 </div>
             </div>
 
@@ -1019,8 +1049,8 @@
                 <p class="year">Aug 2019 – May 2023 | GPA: 4.4</p>
                 <div class="education-details">
                     <ul>
-                        <li>Robotics Vice-Captain</li>
-                        <li>Chinese Club Vice-President and Founder</li>
+                        <li>FIRST Robotics Co-Founder & Vice-Captain</li>
+                        <li>Chinese Club Founder & Vice-President</li>
                         <li>Student Body Secretary and Marketer</li>
                         <li>National Science Honor Society Service Manager</li>
                         <li>Varsity Tennis, Cross Country, Band</li>
@@ -1033,35 +1063,62 @@
     <section id="experience">
         <h2>Research & Experience</h2>
         <p class="section-subtitle">Work Experience and Leadership</p>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+
+        <div class="experience-feature">
             <div class="timeline">
                 <div class="timeline-item">
-                    <h3>FRI Autonomous Driving Research Mentor</h3>
-                    <p class="role">Texas Robotics @ UT Austin</p>
-                    <p class="period">Dec 2025 - Present · Part-time | Austin, TX</p>
+                    <h3>Texas Robotics @ UT Austin</h3>
+                    <p class="role">FRI Autonomous Driving Research Mentor</p>
+                    <p class="period">Dec 2025 - Present | Part-time | Austin, TX</p>
                     <ul>
-                        <li>Mentor for FRI Autonomous Driving research stream, teaching ROS2, Docker, Foxglove visualization, and autonomous systems development</li>
-                        <li>Guide students in developing machine learning policies for autonomous navigation using imitation learning and reinforcement learning</li>
-                        <li>Engineered 1/10th-scale RoboRacer platform with NVIDIA Jetson Orin, Hokuyo LiDAR, Pi camera, VESC controller, IMU, and custom-built power system for FRI and research; authored comprehensive hardware assembly documentation (MkDocs)</li>
-                        <li>Targeting publication at Human-Robot Interaction (HRI) conference</li>
+                        <li>Lead the autonomous systems software research stream within UT Austin's Texas Robotics FRI program, mentoring 30 students in ROS2, Docker, SLAM, and autonomous navigation policy development through imitation learning and reinforcement learning</li>
+                        <li>Guide students through full-stack autonomy integration, debugging, and deployment across perception, controls, and software workflows on a custom autonomous vehicle platform</li>
+                        <li>Designed, built, and validated 18 1/10th-scale RoboRacer platforms, later adopted in a UT computer science course, integrating Jetson Orin, LiDAR, Pi camera, VESC controller, IMU, and a custom PCB power system with MOSFET switching, protection diodes, and buck converters for end-to-end ML navigation</li>
+                        <li>Authored hardware assembly guides, test procedures, and platform documentation in MkDocs; publication submission to Human-Robot Interaction (HRI) in progress</li>
                     </ul>
+                    <div class="project-links">
+                        <a href="https://ut-av.pages.dev/hardware/platform_assembly/" target="_blank" class="project-link">→ Hardware Assembly Guide</a>
+                    </div>
                 </div>
+            </div>
+            <img class="experience-side-image" src="image/Screenshot 2026-01-28 083009.png" alt="Texas Robotics RoboRacer platform screenshot">
+        </div>
 
+        <div class="experience-feature">
+            <div class="timeline">
                 <div class="timeline-item">
-                    <h3>Robotics Researcher</h3>
-                    <p class="role">Autonomous Mobile Robotics Laboratory (AMRL) @ UT Austin</p>
+                    <h3>Autonomous Mobile Robotics Laboratory (AMRL) @ UT Austin</h3>
+                    <p class="role">Robotics Researcher</p>
                     <p class="period">Aug 2025 - Present </p>
                     <ul>
-                        <li>Designing and fabricating a high-speed (70 mph) autonomous off-road ground vehicle equipped with NVIDIA Jetson Orin compute platforms and Livox Mid-360 LiDAR sensors</li>
+                        <li>Designed and fabricated a high-speed (70 mph) autonomous off-road ground vehicle equipped with NVIDIA Jetson Orin compute platforms and Livox Mid-360 LiDAR sensors</li>
                         <li>Integrated precision motor controllers and advanced sensor suites to enable robust, real-time perception and navigation for next-generation autonomous robotics</li>
-                        <li>Engineering fully embedded, Linux-based computing payload for Boston Dynamics Spot with hot-swappable, multi-source power distribution system</li>
+                        <li>Engineered fully embedded, Linux-based computing payload for Boston Dynamics Spot with hot-swappable, multi-source power distribution system</li>
                         <li>Leveraging SSH-based workflows for remote development, testing, and deployment to achieve sustained, compute-independent autonomy</li>
                         <li>Ultimate goal: navigating dense, dynamic environments such as crowded university campuses</li>
                     </ul>
                 </div>
             </div>
-            <img src="image/IMG_6705.jpeg" alt="Research & Experience" style="width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); object-fit: cover;">
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <img class="experience-side-image" src="image/IMG_5457.jpeg" alt="RoboRacer car" style="margin-top: -160px;">
+                <img class="experience-side-image" src="image/IMG_6705.jpeg" alt="AMRL research vehicle work">
+            </div>
+        </div>
+
+        <div class="experience-feature">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>FTC Team 13948 Cathedral Robotics</h3>
+                    <p class="role">Co-Founder &amp; Vice-President</p>
+                    <p class="period">Jan 2020 - July 2023 | El Paso, TX</p>
+                    <ul>
+                        <li>Co-founded high school FIRST robotics team, led student members, and helped establish the team structure, training, and technical direction</li>
+                        <li>Designed a TAPPS Regional Championship robot using laser-cut steel, extrusion, Raspberry Pi, ASIC motor controllers, and Java-based autonomous navigation with vision and encoders</li>
+                        <li>Taught myself Java to build the robot software stack, then taught it to student teammates to support programming and autonomous development</li>
+                    </ul>
+                </div>
+            </div>
+            <img class="experience-side-image" src="image/58e62d5b-3cf6-43e5-8612-b04d7b58f7f9.JPG" alt="FTC Team 13948 Cathedral Robotics robot">
         </div>
     </section>
 
@@ -1087,13 +1144,15 @@
                 <div class="featured-card-body">
                     <h3>Spot Payload</h3>
                     <p class="project-date">2025 – Present</p>
-                    <p>Engineering a fully embedded, Linux-based computing payload for Boston Dynamics' Spot, featuring a hot-swappable, multi-source power distribution system with MOSFET-based automatic switching between shore power, onboard batteries, and Spot's native rail. Schottky diodes provide reverse current protection, with 12V and 19V buck converters powering sensors and Jetson Orin AGX at full capacity.</p>
+                    <p>Engineered a fully embedded, Linux-based computing payload for Boston Dynamics' Spot, featuring a hot-swappable, multi-source power distribution system with MOSFET-based automatic switching between shore power, onboard batteries, and Spot's native rail. Schottky diodes provide reverse current protection. Designed two independent power rails: a 19V rail for the Jetson Orin AGX and a 12V rail powering a Microsoft Azure Kinect, LiDAR, and a USB hub for LiDAR Ethernet connectivity - ensuring isolated, stable power delivery across all compute and sensor loads.</p>
                     <div class="tech-tags">
                         <span class="tag">Linux</span>
                         <span class="tag">Embedded Systems</span>
                         <span class="tag">Power Distribution</span>
                         <span class="tag">SSH Workflows</span>
                         <span class="tag">Boston Dynamics Spot</span>
+                        <span class="tag">Azure Kinect</span>
+                        <span class="tag">LiDAR</span>
                     </div>
                 </div>
             </div>
@@ -1107,7 +1166,7 @@
                 <div class="featured-card-body">
                     <h3>1/10 Autonomous Vehicle Platform</h3>
                     <p class="project-date">2025 – 2026</p>
-                    <p>Designed, built, and tested 1/10th scale autonomous vehicles as a comprehensive learning platform for the FRI Autonomous Driving course. Integrates hardware design, embedded systems, computer vision, and machine learning with NVIDIA Jetson Orin, Hokuyo LiDAR, Pi camera, VESC controller, and IMU. Fully documented the platform for publication at the Human-Robot Interaction (HRI) conference.</p>
+                    <p>Designed, built, and tested 1/10th scale autonomous vehicles as a comprehensive learning platform for the 30 student FRI Autonomous Driving CS course. Integrates hardware design, embedded systems, computer vision, and machine learning with NVIDIA Jetson Orin, Hokuyo LiDAR, Pi camera, VESC controller, and IMU. Fully documented the platform for publication at the Human-Robot Interaction (HRI) conference.</p>
                     <div class="project-links">
                         <a href="https://ut-av.pages.dev/hardware/platform_assembly/" target="_blank" class="project-link">→ Hardware Assembly Guide</a>
                     </div>
@@ -1124,6 +1183,65 @@
 
         <!-- Grid -->
         <div class="projects-grid">
+            <div class="project-card" data-category="robotics">
+                <div class="project-thumbnail" onclick="openLightbox(['image/IMG_5545.JPG'])">
+                    <img src="image/IMG_5545.JPG" alt="AMRL Autonomous Off-Road Vehicle">
+                </div>
+                <div class="project-card-body">
+                    <h3>High-Speed Autonomous Off-Road Vehicle</h3>
+                    <p class="project-date">2025 – Present</p>
+                    <p>Designed and programmed a high-speed (70 mph) autonomous off-road ground vehicle with NVIDIA Jetson Orin and Livox Mid-360 LiDAR, integrating motor controllers and sensor suites for real-time perception and navigation. Developing and training ML-based autonomous navigation policies directly on the platform.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Autonomous Systems</span>
+                        <span class="tag">NVIDIA Jetson Orin</span>
+                        <span class="tag">LiDAR</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">ROS2</span>
+                        <span class="tag">Robotics</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="robotics">
+                <div class="project-thumbnail" onclick="openLightbox(['image/1730219516473.jpg','image/1730219406655.jpg','image/1730219376296.jpg','image/1730219329175.jpg'])">
+                    <img src="image/1730219516473.jpg" alt="FTC Robot">
+                    <span class="gallery-count">4 photos</span>
+                </div>
+                <div class="project-card-body">
+                    <h3>FTC Robot Prototypes</h3>
+                    <p class="project-date">2023</p>
+                    <p>Designed, manufactured, and programmed a FIRST Tech Challenge regionals robot for Team 13948. Two full prototypes with mechanical design, electrical systems, and autonomous Java programming.</p>
+                    <div class="project-links">
+                        <a href="https://www.youtube.com/watch?v=zYdXGLUb7h4" target="_blank" class="project-link">→ Watch on YouTube</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">Raspberry Pi</span>
+                        <span class="tag">CAD</span>
+                        <span class="tag">Robotics</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="robotics">
+                <div class="project-thumbnail" onclick="openLightbox(['image/IMG_4680.jpeg'])">
+                    <img src="image/IMG_4680.jpeg" alt="Joystick-Controlled Robot Car">
+                </div>
+                <div class="project-card-body">
+                    <h3>Joystick-Controlled Robot Car</h3>
+                    <p class="project-date">Feb 2026</p>
+                    <p>Designed, wired, and programmed an Arduino-based robot car for ME 350R Robot Mechanism Design. Integrated an L298N motor driver, DC motors, and joystick for real-time directional control with smooth speed interpolation. Focused on cable management, structural integrity, and clean chassis aesthetics.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Arduino</span>
+                        <span class="tag">Mechatronics</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">Motor Control</span>
+                        <span class="tag">Embedded Systems</span>
+                        <span class="tag">Mechanical Design</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="project-card" data-category="embedded">
                 <div class="project-thumbnail" onclick="openLightbox(['image/IMG_3349.jpeg'])">
                     <img src="image/IMG_3349.jpeg" alt="Space Invaders Game">
@@ -1175,27 +1293,6 @@
                         <span class="tag">Machine Learning</span>
                         <span class="tag">3D Printing</span>
                         <span class="tag">Motion Control</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="robotics">
-                <div class="project-thumbnail" onclick="openLightbox(['image/1730219516473.jpg','image/1730219406655.jpg','image/1730219376296.jpg','image/1730219329175.jpg'])">
-                    <img src="image/1730219516473.jpg" alt="FTC Robot">
-                    <span class="gallery-count">4 photos</span>
-                </div>
-                <div class="project-card-body">
-                    <h3>FTC Robot Prototypes</h3>
-                    <p class="project-date">2023</p>
-                    <p>Designed, manufactured, and programmed a FIRST Tech Challenge regionals robot for Team 13948. Two full prototypes with mechanical design, electrical systems, and autonomous Java programming.</p>
-                    <div class="project-links">
-                        <a href="https://www.youtube.com/watch?v=zYdXGLUb7h4" target="_blank" class="project-link">→ Watch on YouTube</a>
-                    </div>
-                    <div class="tech-tags">
-                        <span class="tag">Java</span>
-                        <span class="tag">Raspberry Pi</span>
-                        <span class="tag">CAD</span>
-                        <span class="tag">Robotics</span>
                     </div>
                 </div>
             </div>
@@ -1267,7 +1364,13 @@
             </div>
 
             <div class="sport-card">
-                <div class="sport-icon">🎾</div>
+                <div class="sport-icon">&#x1F3C0;</div>
+                <h3>Basketball</h3>
+                <p>UT Austin Intramurals &bull; Current</p>
+            </div>
+
+            <div class="sport-card">
+                <div class="sport-icon">&#x1F3BE;</div>
                 <h3>Varsity Tennis</h3>
                 <p>Cathedral High School • 2019-2023</p>
             </div>
