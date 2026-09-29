@@ -1,649 +1,219 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Josemiliano Cohen - ECE & Robotics Engineer</title>
+    <title>Josemiliano Cohen</title>
+    <meta name="description" content="Josemiliano Cohen — Electrical and Computer Engineering undergraduate at UT Austin, robotics researcher at the Autonomous Mobile Robotics Laboratory.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --primary: #C9A227;
-            --secondary: #0D1B2A;
-            --accent: #4FC3F7;
-            --text: #1a1a1a;
-            --text-light: #666;
-            --bg: #F8F9FB;
-            --card-bg: #ffffff;
-            --border: #e0e0e0;
+            --text: #1f1f1f;
+            --muted: #5a5a5a;
+            --rule: #d8d8d8;
+            --link: #9b2915;
+            --bg: #ffffff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
-            font-family: 'Archivo', sans-serif;
+            margin: 0;
             background: var(--bg);
             color: var(--text);
+            font-family: 'Gentium Book Plus', Georgia, 'Times New Roman', serif;
+            font-size: 18px;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(135deg, transparent 0%, transparent 49%, var(--accent) 49%, var(--accent) 51%, transparent 51%),
-                linear-gradient(45deg, transparent 0%, transparent 49%, var(--primary) 49%, var(--primary) 51%, transparent 51%);
-            background-size: 60px 60px;
-            opacity: 0.02;
-            z-index: -1;
-            animation: bgSlide 20s linear infinite;
+        a {
+            color: var(--link);
+            text-decoration: none;
         }
 
-        @keyframes bgSlide {
-            0% { background-position: 0 0, 0 0; }
-            100% { background-position: 60px 60px, -60px -60px; }
-        }
+        a:hover { text-decoration: underline; }
 
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(250, 250, 250, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 2px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        header.scrolled {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        nav {
-            max-width: 1200px;
+        .container {
+            max-width: 900px;
             margin: 0 auto;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding-inline: 24px;
         }
 
-        .logo {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--secondary);
-            letter-spacing: -0.5px;
-        }
-
-        .logo span {
-            color: var(--primary);
+        /* Navigation */
+        header {
+            border-bottom: 1px solid var(--rule);
+            background: var(--bg);
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         nav ul {
             display: flex;
-            gap: 2.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0;
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            margin-top: 80px;
-            min-height: calc(100vh - 80px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4rem 2rem;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-size: 4.5rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            color: var(--secondary);
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .hero-text h1 .highlight {
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero-text h1 .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            width: 100%;
-            height: 12px;
-            background: var(--accent);
-            opacity: 0.3;
-            z-index: -1;
-        }
-
-        .hero-text .subtitle {
-            font-size: 1.4rem;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-            font-weight: 400;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.2s forwards;
-            line-height: 1.5;
-        }
-
-        .hero-text .tagline {
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 2.5rem;
-            font-weight: 500;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.3s forwards;
-        }
-
-        .hero-text .university {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.1rem;
-            color: var(--secondary);
-            margin-bottom: 3rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.4s forwards;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.6s forwards;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--secondary);
-            border: 2px solid var(--secondary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--secondary);
-            color: white;
-        }
-
-        .hero-visual {
-            position: relative;
-            opacity: 0;
-            animation: fadeInRight 0.8s ease 0.4s forwards;
-        }
-
-        .code-block {
-            background: var(--secondary);
-            color: var(--accent);
-            padding: 2rem;
-            border-radius: 12px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            line-height: 1.8;
-            box-shadow: 0 10px 40px rgba(13, 27, 42, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .code-block::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-
-        .code-line {
             display: block;
-            padding: 0.2rem 0;
+            padding: 14px 20px;
+            color: var(--text);
+            font-size: 0.82rem;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            border-bottom: 2px solid transparent;
         }
 
-        .code-comment {
-            color: #888;
+        nav a:hover {
+            text-decoration: none;
+            color: var(--link);
         }
 
-        .code-keyword {
-            color: var(--primary);
+        nav a.active {
+            border-bottom-color: var(--text);
         }
 
+        /* Sections */
         section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 6rem 2rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            padding-block: 34px 8px;
+            scroll-margin-top: 60px;
         }
 
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
+        h1 {
+            font-size: 2.1rem;
+            font-weight: 400;
+            margin: 0 0 18px;
         }
 
         h2 {
-            font-size: 3rem;
+            font-size: 1.35rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--secondary);
-            position: relative;
-            display: inline-block;
+            margin: 32px 0 6px;
         }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60%;
-            height: 4px;
-            background: var(--primary);
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin: 26px 0 2px;
         }
 
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-bottom: 3rem;
+        p { margin: 0 0 14px; }
+
+        ul.plain {
+            margin: 8px 0 14px;
+            padding-left: 22px;
         }
 
-        .education-grid {
-            display: grid;
-            gap: 2rem;
-            margin-top: 2rem;
+        ul.plain li { margin-bottom: 6px; }
+
+        .meta {
+            color: var(--muted);
+            font-style: italic;
+            margin: 0 0 8px;
         }
 
-        .education-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 12px;
-            border: 2px solid var(--border);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .education-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--primary);
-        }
-
-        .education-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary);
-        }
-
-        .education-card h3 {
-            font-size: 1.8rem;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .education-card .degree {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .education-card .year {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .education-details {
-            margin-top: 1rem;
-            color: var(--text-light);
-        }
-
-        .education-details ul {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 0.5rem;
-        }
-
-        .education-details li {
-            padding-left: 1.5rem;
-            margin-bottom: 0.3rem;
-            position: relative;
-        }
-
-        .education-details li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        /* Filter buttons */
-        .project-filters {
-            display: flex;
-            gap: 0.75rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            font-family: 'JetBrains Mono', monospace;
+        .note {
             font-size: 0.85rem;
-            font-weight: 600;
-            padding: 0.5rem 1.25rem;
-            border: 2px solid var(--border);
-            background: transparent;
-            color: var(--text-light);
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            color: var(--muted);
         }
 
-        .filter-btn:hover,
-        .filter-btn.active {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: rgba(201, 162, 39, 0.1);
-        }
-
-        /* Featured projects */
-        .featured-projects {
+        /* About */
+        .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: 220px 1fr;
+            gap: 28px;
+            align-items: start;
+            margin-bottom: 8px;
         }
 
-        .featured-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            border: 2px solid var(--border);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .featured-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-            border-color: var(--primary);
-        }
-
-        .featured-card-image {
-            position: relative;
-            height: 240px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .featured-card-image img {
+        .portrait {
             width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: #f0f0f0;
-            transition: transform 0.4s ease;
+            max-width: 220px;
+            border: 1px solid var(--rule);
         }
 
-        .featured-card:hover .featured-card-image img {
-            transform: scale(1.03);
-        }
+        .about-grid p { margin-bottom: 12px; }
 
-        .gallery-count {
-            position: absolute;
-            bottom: 0.75rem;
-            right: 0.75rem;
-            background: rgba(0, 0, 0, 0.65);
-            color: white;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            padding: 0.3rem 0.7rem;
-            border-radius: 4px;
-            pointer-events: none;
-        }
-
-        .featured-badge {
-            position: absolute;
-            top: 0.75rem;
-            left: 0.75rem;
-            background: var(--primary);
-            color: white;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .featured-card-body {
-            padding: 1.75rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .featured-card-body h3 {
-            font-size: 1.4rem;
-            color: var(--secondary);
-        }
-
-        .featured-card-body p {
-            color: var(--text-light);
-            line-height: 1.65;
-            font-size: 0.95rem;
-            flex: 1;
-        }
-
-        /* Regular project grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            border: 2px solid var(--border);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card::before {
-            content: '';
-            display: block;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary);
-        }
-
-        .project-thumbnail {
-            height: 160px;
-            overflow: hidden;
-            cursor: pointer;
-            position: relative;
-            background: var(--border);
-        }
-
-        .project-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: #f0f0f0;
-            transition: transform 0.4s ease;
-        }
-
-        .project-card:hover .project-thumbnail img {
-            transform: scale(1.05);
-        }
-
-        .project-thumbnail .gallery-count {
-            bottom: 0.5rem;
-            right: 0.5rem;
-        }
-
-        .project-card-body {
-            padding: 1.25rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .project-card-body h3 {
-            font-size: 1.1rem;
-            color: var(--secondary);
-            line-height: 1.3;
-        }
-
-        .project-date {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.78rem;
-            color: var(--text-light);
-        }
-
-        .project-card-body p {
-            color: var(--text-light);
-            font-size: 0.88rem;
-            line-height: 1.6;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-link {
-            font-size: 0.85rem;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .project-link:hover {
-            color: var(--secondary);
+        .role-title {
+            font-weight: 700;
             text-decoration: underline;
         }
 
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-top: 0.75rem;
+        /* Entries (experience, projects, education) */
+        .entry {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 24px;
+            align-items: start;
+            padding-block: 20px;
+            border-top: 1px solid var(--rule);
         }
 
-        .tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            padding: 0.3rem 0.6rem;
-            background: rgba(201, 162, 39, 0.1);
-            color: var(--secondary);
-            border-radius: 4px;
-            font-weight: 600;
+        .entry:first-of-type { border-top: none; }
+
+        .entry.no-media { grid-template-columns: 1fr; }
+
+        .entry-media img {
+            width: 100%;
+            border: 1px solid var(--rule);
+            cursor: pointer;
+            display: block;
         }
 
-        .project-card.hidden,
-        .featured-card.hidden {
-            display: none;
+        .entry-media img + img { margin-top: 10px; }
+
+        .entry-body > :first-child { margin-top: 0; }
+
+        .caption {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-top: 4px;
         }
+
+        .tools {
+            font-size: 0.88rem;
+            color: var(--muted);
+            margin-bottom: 0;
+        }
+
+        .links {
+            margin: 6px 0 0;
+            font-size: 0.92rem;
+        }
+
+        .links a + a { margin-left: 16px; }
+
+        /* Activities */
+        .activities-list {
+            columns: 2;
+            column-gap: 40px;
+            margin: 10px 0 20px;
+            padding-left: 22px;
+        }
+
+        .activities-list li {
+            margin-bottom: 6px;
+            break-inside: avoid;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--rule);
+            margin-top: 40px;
+            padding-block: 24px 40px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        footer .footer-links a + a { margin-left: 18px; }
 
         /* Lightbox */
         .lightbox {
@@ -651,796 +221,456 @@
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.92);
-            z-index: 9999;
+            z-index: 100;
             align-items: center;
             justify-content: center;
         }
 
-        .lightbox.open {
-            display: flex;
-        }
+        .lightbox.open { display: flex; }
 
         .lightbox-content img,
         .lightbox-content video {
             max-width: 90vw;
             max-height: 82vh;
-            border-radius: 8px;
             object-fit: contain;
         }
 
-        .lightbox-close {
+        .lightbox button {
             position: fixed;
-            top: 1.25rem;
-            right: 1.5rem;
             background: none;
             border: none;
-            color: white;
-            font-size: 2.5rem;
-            line-height: 1;
+            color: #fff;
             cursor: pointer;
-            opacity: 0.75;
-            transition: opacity 0.2s;
+            font-family: inherit;
         }
 
-        .lightbox-close:hover { opacity: 1; }
+        .lightbox-close {
+            top: 14px;
+            right: 20px;
+            font-size: 2rem;
+            line-height: 1;
+        }
 
         .lightbox-nav {
-            position: fixed;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.15);
-            border: none;
-            color: white;
-            font-size: 2rem;
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
+            font-size: 2.4rem;
+            padding: 8px 14px;
         }
 
-        .lightbox-nav:hover { background: rgba(255, 255, 255, 0.3); }
-        .lightbox-prev { left: 1rem; }
-        .lightbox-next { right: 1rem; }
+        .lightbox-prev { left: 8px; }
+        .lightbox-next { right: 8px; }
 
         .lightbox-counter {
             position: fixed;
-            bottom: 1.5rem;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.65);
-            font-family: 'JetBrains Mono', monospace;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.85rem;
         }
 
-        .timeline {
-            position: relative;
-            margin-top: 2rem;
-            padding-left: 3rem;
-        }
+        @media (max-width: 720px) {
+            body { font-size: 17px; }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 3px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--primary), var(--accent));
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            padding: 1.5rem 2rem;
-            background: var(--card-bg);
-            border-radius: 12px;
-            border: 2px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -3.75rem;
-            top: 2rem;
-            width: 15px;
-            height: 15px;
-            background: var(--primary);
-            border: 3px solid var(--bg);
-            border-radius: 50%;
-        }
-
-        .timeline-item:hover {
-            transform: translateX(10px);
-            border-color: var(--primary);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .timeline-item h3 {
-            font-size: 1.5rem;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-item .role {
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-item .period {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-
-        .timeline-item ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .timeline-item li {
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-            position: relative;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        .timeline-item li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .experience-feature {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(320px, 400px);
-            gap: 2rem;
-            align-items: start;
-            margin-top: 3rem;
-        }
-
-        .experience-feature .timeline {
-            margin-top: 0;
-        }
-
-        .experience-feature .timeline-item {
-            margin-bottom: 0;
-        }
-
-        .experience-side-image {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
-            border: 2px solid var(--border);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            justify-self: start;
-            object-fit: cover;
-        }
-
-        .sports-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .sport-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 2px solid var(--border);
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .sport-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .sport-card:hover::before {
-            opacity: 0.1;
-        }
-
-        .sport-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary);
-        }
-
-        .sport-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .sport-card h3 {
-            font-size: 1.3rem;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .sport-card p {
-            color: var(--text-light);
-            position: relative;
-            z-index: 1;
-        }
-
-        footer {
-            background: var(--secondary);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            transform: translateY(-3px);
-            color: var(--accent);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-content {
+            .about-grid,
+            .entry {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 16px;
             }
 
-            .hero-text h1 {
-                font-size: 3rem;
-            }
+            .entry-media { max-width: 320px; }
 
-            h2 {
-                font-size: 2rem;
-            }
+            .activities-list { columns: 1; }
 
-            nav ul {
-                gap: 1.5rem;
-            }
-
-            .featured-projects {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .sports-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline {
-                padding-left: 2rem;
-            }
-
-            .timeline-item::before {
-                left: -2.75rem;
-            }
-
-            .experience-feature {
-                grid-template-columns: 1fr;
-            }
+            nav a { padding: 12px 12px; }
         }
     </style>
 </head>
 <body>
-    <header id="header">
-        <nav>
-            <div class="logo">JC<span>.</span></div>
+    <header>
+        <nav class="container">
             <ul>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#experience">Research</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#research">Research</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#activities">Activities</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Josemiliano <span class="highlight">Cohen</span></h1>
-                <p class="subtitle">Electrical & Computer Engineering + Robotics</p>
-                <p class="tagline">Robotics Research @ AMRL</p>
-                <p class="university">University of Texas at Austin</p>
-                <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="#experience" class="btn btn-secondary">Research</a>
+    <main class="container">
+        <section id="about">
+            <h1>About Me</h1>
+
+            <div class="about-grid">
+                <img class="portrait" src="image/IMG_6716.jpeg" alt="Josemiliano Cohen">
+                <div>
+                    <p>
+                        <span class="role-title">Josemiliano Cohen</span><br>
+                        B.S. Electrical and Computer Engineering, Minor in Robotics<br>
+                        The University of Texas at Austin, Class of 2027<br>
+                        Undergraduate Researcher, <a href="https://amrl.cs.utexas.edu/" target="_blank" rel="noopener">Autonomous Mobile Robotics Laboratory</a><br>
+                        Teaching Assistant and Peer Mentor, <a href="https://robotics.utexas.edu/" target="_blank" rel="noopener">Texas Robotics</a> FRI Autonomous Driving
+                    </p>
+                    <p>
+                        <a href="mailto:j6cohen@gmail.com">j6cohen@gmail.com</a>
+                    </p>
                 </div>
             </div>
-            <div class="hero-visual">
-                <img src="image/IMG_6716.jpeg" alt="Josemiliano Cohen" style="width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); object-fit: cover;">
-            </div>
-        </div>
-    </section>
 
-    <section id="education">
-        <h2>Education</h2>
-        <p class="section-subtitle">Academic Background & Training</p>
-        
-        <div class="education-grid">
-            <div class="education-card">
-                <h3>University of Texas at Austin</h3>
-                <p class="degree">Bachelor of Engineering: Electrical & Computer Engineering</p>
-                <p class="degree">Minor: Robotics</p>
-                <p class="year">Aug 2023 – May 2027 | Third-Year Student</p>
-                <img src="image/ut ece.png" alt="UT Austin ECE Logo" style="width: 100%; max-width: 250px; border-radius: 8px; margin: 1rem 0;">
-                <div class="education-details">
-                    <ul>
-                        <li>Technical Core: Embedded Systems and Computer Architecture</li>
-                        <li>Organizations: Texas Robotics <span style="font-size:0.85em; color:var(--primary);">(Research Mentor)</span>, UT SHPE <span style="font-size:0.85em; color:var(--primary);">(Intramural Sports Chair)</span>, IEEE <span style="font-size:0.85em; color:var(--primary);">(Member)</span>, Longhorn Boxing <span style="font-size:0.85em; color:var(--primary);">(Board)</span></li>
+            <h2>Interests</h2>
+            <p class="meta">Autonomous Navigation, Embedded Systems, Robot Hardware Design, Machine Learning for Control</p>
+            <p>
+                I build the hardware and software that let robots operate on their own outside the lab. My work spans
+                embedded power and compute design, sensor integration, and learning-based navigation policies, with an
+                emphasis on platforms that survive real deployment — high-speed off-road vehicles, legged robots, and
+                scaled autonomous cars. Alongside research, I lead an undergraduate autonomous driving stream where I
+                teach students to take a robot from bare chassis to autonomous operation.
+            </p>
+        </section>
+
+        <section id="research">
+            <h1>Research and Experience</h1>
+
+            <div class="entry">
+                <div class="entry-media">
+                    <img src="image/IMG_8830.jpeg" alt="Josemiliano Cohen at the Space Vehicle Mockup Facility, NASA Johnson Space Center" onclick="openLightbox(['image/IMG_8830.jpeg','image/IMG_9357.jpeg'])">
+                    <img src="image/IMG_9357.jpeg" alt="Shuttle payload bay mockup at NASA Johnson Space Center" onclick="openLightbox(['image/IMG_8830.jpeg','image/IMG_9357.jpeg'], 1)">
+                    <span class="caption">Johnson Space Center, Houston</span>
+                </div>
+                <div class="entry-body">
+                    <h3>NASA Johnson Space Center</h3>
+                    <p class="meta">Robotics Software Engineering Intern &middot; May – August 2026 &middot; Houston, TX</p>
+                    <ul class="plain">
+                        <li>Built a C++ and Python ROS2 perception stack fusing stereo camera and 128-beam LiDAR data for real-time terrain reconstruction, generating terramechanics datasets used to validate lunar rover mobility for Artemis missions.</li>
+                        <li>Implemented a sensor fusion pipeline integrating a Fixposition Vision-RTK 2 with hardware-timestamped LiDAR synchronization, reducing visual odometry pose drift by roughly 90% in high-glare outdoor conditions.</li>
+                        <li>Architected the full multi-sensor payload — Jetson AGX Orin, three ZED stereo cameras, and an Ouster OS0-128 — end to end, from hardware bring-up through ROS2 driver integration and deployment for field operation.</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="education-card">
-                <h3>El Paso Community College</h3>
-                <p class="degree">Associate of Arts: Multidisciplinary Studies</p>
-                <p class="year">Aug 2020 – May 2023</p>
-                <div class="education-details">
-                    <p>Pursued High School and Associate's degree simultaneously, graduated high school with 60+ college credits</p>
+            <div class="entry">
+                <div class="entry-media">
+                    <img src="image/IMG_5457.jpeg" alt="AMRL research vehicle" onclick="openLightbox(['image/IMG_5457.jpeg','image/IMG_6705.jpeg'])">
+                    <img src="image/IMG_6705.jpeg" alt="AMRL vehicle build" onclick="openLightbox(['image/IMG_5457.jpeg','image/IMG_6705.jpeg'], 1)">
                 </div>
-            </div>
-
-            <div class="education-card">
-                <h3>Cathedral High School</h3>
-                <p class="degree">High School Diploma</p>
-                <p class="year">Aug 2019 – May 2023 | GPA: 4.4</p>
-                <div class="education-details">
-                    <ul>
-                        <li>FIRST Robotics Co-Founder & Vice-Captain</li>
-                        <li>Chinese Club Founder & Vice-President</li>
-                        <li>Student Body Secretary and Marketer</li>
-                        <li>National Science Honor Society Service Manager</li>
-                        <li>Varsity Tennis, Cross Country, Band</li>
+                <div class="entry-body">
+                    <h3>Autonomous Mobile Robotics Laboratory (AMRL), UT Austin</h3>
+                    <p class="meta">Undergraduate Robotics Researcher &middot; August 2025 – Present</p>
+                    <ul class="plain">
+                        <li>Designed and fabricated a high-speed (70 mph) autonomous off-road ground vehicle equipped with NVIDIA Jetson Orin compute and Livox Mid-360 LiDAR.</li>
+                        <li>Integrated precision motor controllers and sensor suites for robust, real-time perception and navigation.</li>
+                        <li>Engineered a fully embedded, Linux-based computing payload for Boston Dynamics Spot with a hot-swappable, multi-source power distribution system.</li>
+                        <li>Assisted with social navigation data collection and contributed to development of RMA policies for navigation in crowded, dynamic environments.</li>
+                        <li>Used SSH-based remote workflows for development, testing, and deployment to achieve sustained, compute-independent autonomy.</li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section id="experience">
-        <h2>Research & Experience</h2>
-        <p class="section-subtitle">Work Experience and Leadership</p>
-
-        <div class="experience-feature">
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h3>Texas Robotics @ UT Austin</h3>
-                    <p class="role">FRI Autonomous Driving Research Mentor</p>
-                    <p class="period">Dec 2025 - Present | Part-time | Austin, TX</p>
-                    <ul>
-                        <li>Lead the autonomous driving software research stream within UT Austin's Texas Robotics FRI program, mentoring 30 students in ROS2, Docker, SLAM, and autonomous navigation policy development through imitation learning and reinforcement learning</li>
-                        <li>Guide students through full-stack autonomy integration, debugging, and deployment across perception, controls, and software workflows on a custom autonomous vehicle platform</li>
-                        <li>Designed, built, and validated 18 1/10th-scale RoboRacer platforms, later adopted in a UT computer science course, integrating Jetson Orin, LiDAR, Pi camera, VESC controller, IMU, and a custom PCB power system with MOSFET switching, protection diodes, and buck converters for end-to-end ML navigation</li>
-                        <li>Authored hardware assembly guides, test procedures, and platform documentation in MkDocs; publication submission to Human-Robot Interaction (HRI) in progress</li>
+            <div class="entry">
+                <div class="entry-media">
+                    <img src="image/Screenshot 2026-01-28 083009.png" alt="RoboRacer platform" onclick="openLightbox(['image/Screenshot 2026-01-28 083009.png','image/IMG_5222.jpeg'])">
+                </div>
+                <div class="entry-body">
+                    <h3>Texas Robotics, UT Austin</h3>
+                    <p class="meta">Teaching Assistant and Peer Mentor, FRI Autonomous Driving &middot; December 2025 – Present</p>
+                    <ul class="plain">
+                        <li>Lead the autonomous driving software research stream, mentoring 30 students in ROS2, Docker, SLAM, and navigation policy development through imitation and reinforcement learning.</li>
+                        <li>Guide students through full-stack autonomy integration, debugging, and deployment across perception, controls, and software workflows on a custom vehicle platform.</li>
+                        <li>Designed, built, and validated 18 1/10th-scale RoboRacer platforms, later adopted in a UT computer science course, integrating Jetson Orin, LiDAR, Pi camera, VESC controller, IMU, and a custom PCB power system with MOSFET switching, protection diodes, and buck converters.</li>
+                        <li>Authored hardware assembly guides, test procedures, and platform documentation in MkDocs; a publication submission to Human-Robot Interaction (HRI) is in progress.</li>
                     </ul>
-                    <div class="project-links">
-                        <a href="https://ut-av.pages.dev/hardware/platform_assembly/" target="_blank" class="project-link">→ Hardware Assembly Guide</a>
-                    </div>
+                    <p class="links"><a href="https://ut-av.pages.dev/hardware/platform_assembly/" target="_blank" rel="noopener">Hardware assembly guide</a></p>
                 </div>
             </div>
-            <img class="experience-side-image" src="image/Screenshot 2026-01-28 083009.png" alt="Texas Robotics RoboRacer platform screenshot">
-        </div>
 
-        <div class="experience-feature">
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h3>Autonomous Mobile Robotics Laboratory (AMRL) @ UT Austin</h3>
-                    <p class="role">Robotics Researcher</p>
-                    <p class="period">Aug 2025 - Present </p>
-                    <ul>
-                        <li>Designed and fabricated a high-speed (70 mph) autonomous off-road ground vehicle equipped with NVIDIA Jetson Orin compute platforms and Livox Mid-360 LiDAR sensors</li>
-                        <li>Integrated precision motor controllers and advanced sensor suites to enable robust, real-time perception and navigation for next-generation autonomous robotics</li>
-                        <li>Engineered fully embedded, Linux-based computing payload for Boston Dynamics Spot with hot-swappable, multi-source power distribution system</li>
-                            <li>Assisted with social navigation data collection and contributed to development of RMA policies for autonomous navigation in crowded, dynamic environments</li>
-                            <li>Leveraged SSH-based workflows for remote development, testing, and deployment to achieve sustained, compute-independent autonomy</li>
-                        <li>Ultimate goal: navigating dense, dynamic environments such as crowded university campuses</li>
+            <div class="entry">
+                <div class="entry-media">
+                    <img src="image/58e62d5b-3cf6-43e5-8612-b04d7b58f7f9.JPG" alt="FTC Team 13948 robot" onclick="openLightbox(['image/58e62d5b-3cf6-43e5-8612-b04d7b58f7f9.JPG'])">
+                </div>
+                <div class="entry-body">
+                    <h3>FTC Team 13948, Cathedral Robotics</h3>
+                    <p class="meta">Co-Founder and Vice-President &middot; January 2020 – July 2023 &middot; El Paso, TX</p>
+                    <ul class="plain">
+                        <li>Co-founded the high school FIRST robotics team and helped establish its structure, training program, and technical direction.</li>
+                        <li>Designed a TAPPS Regional Championship robot using laser-cut steel, extrusion, Raspberry Pi, ASIC motor controllers, and Java-based autonomous navigation with vision and encoders.</li>
+                        <li>Taught myself Java to build the robot software stack, then taught it to teammates to support programming and autonomous development.</li>
                     </ul>
                 </div>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <img class="experience-side-image" src="image/IMG_5457.jpeg" alt="RoboRacer car" style="margin-top: -160px;">
-                <img class="experience-side-image" src="image/IMG_6705.jpeg" alt="AMRL research vehicle work">
-            </div>
-        </div>
+        </section>
 
-        <div class="experience-feature">
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h3>FTC Team 13948 Cathedral Robotics</h3>
-                    <p class="role">Co-Founder &amp; Vice-President</p>
-                    <p class="period">Jan 2020 - July 2023 | El Paso, TX</p>
-                    <ul>
-                        <li>Co-founded high school FIRST robotics team, led student members, and helped establish the team structure, training, and technical direction</li>
-                        <li>Designed a TAPPS Regional Championship robot using laser-cut steel, extrusion, Raspberry Pi, ASIC motor controllers, and Java-based autonomous navigation with vision and encoders</li>
-                        <li>Taught myself Java to build the robot software stack, then taught it to student teammates to support programming and autonomous development</li>
-                    </ul>
+        <section id="projects">
+            <h1>Projects</h1>
+
+            <h2>Robotics</h2>
+
+            <div class="entry">
+                <div class="entry-media">
+                    <img src="image/1763585822042.jpg" alt="Spot payload" onclick="openLightbox(['image/1763585822042.jpg','image/IMG_5687.JPG','image/IMG_5768.jpeg'])">
+                    <span class="caption">3 photos — click to enlarge</span>
                 </div>
-            </div>
-            <img class="experience-side-image" src="image/58e62d5b-3cf6-43e5-8612-b04d7b58f7f9.JPG" alt="FTC Team 13948 Cathedral Robotics robot">
-        </div>
-    </section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-        <p class="section-subtitle">Featured Technical Work</p>
-
-        <div class="project-filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="robotics">Robotics</button>
-            <button class="filter-btn" data-filter="embedded">Embedded</button>
-            <button class="filter-btn" data-filter="software">Software</button>
-        </div>
-
-        <!-- Featured -->
-        <div class="featured-projects">
-            <div class="featured-card" data-category="robotics">
-                <div class="featured-card-image" onclick="openLightbox(['image/1763585822042.jpg','image/IMG_5687.JPG','image/IMG_5768.jpeg'])">
-                    <img src="image/1763585822042.jpg" alt="Spot Payload">
-                    <span class="featured-badge">Featured</span>
-                    <span class="gallery-count">3 photos</span>
-                </div>
-                <div class="featured-card-body">
-                    <h3>Spot Payload</h3>
-                    <p class="project-date">2025 – Present</p>
-                    <p>Engineered a fully embedded, Linux-based computing payload for Boston Dynamics' Spot, featuring a hot-swappable, multi-source power distribution system with MOSFET-based automatic switching between shore power, onboard batteries, and Spot's native rail. Schottky diodes provide reverse current protection. Designed two independent power rails: a 19V rail for the Jetson Orin AGX and a 12V rail powering a Microsoft Azure Kinect, LiDAR, and a USB hub for LiDAR Ethernet connectivity - ensuring isolated, stable power delivery across all compute and sensor loads.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Linux</span>
-                        <span class="tag">Embedded Systems</span>
-                        <span class="tag">Power Distribution</span>
-                        <span class="tag">SSH Workflows</span>
-                        <span class="tag">Boston Dynamics Spot</span>
-                        <span class="tag">Azure Kinect</span>
-                        <span class="tag">LiDAR</span>
-                    </div>
+                <div class="entry-body">
+                    <h3>Spot Computing and Power Payload</h3>
+                    <p class="meta">2025 – Present</p>
+                    <p>
+                        A fully embedded, Linux-based computing payload for Boston Dynamics Spot, with a hot-swappable,
+                        multi-source power distribution system using MOSFET-based automatic switching between shore power,
+                        onboard batteries, and Spot's native rail. Schottky diodes provide reverse current protection. The
+                        design carries two independent rails: 19V for the Jetson Orin AGX and 12V for a Microsoft Azure
+                        Kinect, LiDAR, and a USB hub for LiDAR Ethernet — keeping compute and sensor loads isolated and stable.
+                    </p>
+                    <p class="tools">Linux, embedded systems, power distribution, Azure Kinect, LiDAR, SSH workflows</p>
                 </div>
             </div>
 
-            <div class="featured-card" data-category="robotics">
-                <div class="featured-card-image" onclick="openLightbox(['image/Screenshot 2026-01-28 083009.png','image/IMG_5222.jpeg'])">
-                    <img src="image/Screenshot 2026-01-28 083009.png" alt="1/10 Autonomous Vehicle">
-                    <span class="featured-badge">Featured</span>
-                    <span class="gallery-count">2 photos</span>
+            <div class="entry">
+                <div class="entry-media">
+                    <img src="image/Screenshot 2026-01-28 083009.png" alt="1/10 scale autonomous vehicle" onclick="openLightbox(['image/Screenshot 2026-01-28 083009.png','image/IMG_5222.jpeg'])">
+                    <span class="caption">2 photos — click to enlarge</span>
                 </div>
-                <div class="featured-card-body">
-                    <h3>1/10 Autonomous Vehicle Platform</h3>
-                    <p class="project-date">2025 – 2026</p>
-                    <p>Designed, built, and tested 1/10th scale autonomous vehicles as a comprehensive learning platform for the 30 student FRI Autonomous Driving CS course. Integrates hardware design, embedded systems, computer vision, and machine learning with NVIDIA Jetson Orin, Hokuyo LiDAR, Pi camera, VESC controller, and IMU. Fully documented the platform for publication at the Human-Robot Interaction (HRI) conference.</p>
-                    <div class="project-links">
-                        <a href="https://ut-av.pages.dev/hardware/platform_assembly/" target="_blank" class="project-link">→ Hardware Assembly Guide</a>
-                    </div>
-                    <div class="tech-tags">
-                        <span class="tag">Autonomous Driving</span>
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">Computer Vision</span>
-                        <span class="tag">Embedded Systems</span>
-                        <span class="tag">Hardware Design</span>
-                    </div>
+                <div class="entry-body">
+                    <h3>1/10 Scale Autonomous Vehicle Platform</h3>
+                    <p class="meta">2025 – 2026</p>
+                    <p>
+                        Designed, built, and tested 1/10th-scale autonomous vehicles as the teaching platform for the
+                        30-student FRI Autonomous Driving course. The platform combines hardware design, embedded systems,
+                        computer vision, and machine learning on NVIDIA Jetson Orin, Hokuyo LiDAR, a Pi camera, VESC
+                        controller, and IMU, and is documented for publication at the Human-Robot Interaction conference.
+                    </p>
+                    <p class="links"><a href="https://ut-av.pages.dev/hardware/platform_assembly/" target="_blank" rel="noopener">Hardware assembly guide</a></p>
+                    <p class="tools">Autonomous driving, machine learning, computer vision, embedded systems, hardware design</p>
                 </div>
             </div>
-        </div>
 
-        <!-- Grid -->
-        <div class="projects-grid">
-            <div class="project-card" data-category="robotics">
-                <div class="project-thumbnail" onclick="openLightbox(['image/IMG_5545.JPG'])">
-                    <img src="image/IMG_5545.JPG" alt="AMRL Autonomous Off-Road Vehicle">
+            <div class="entry">
+                <div class="entry-media">
+                    <img src="image/IMG_5545.JPG" alt="Autonomous off-road vehicle" onclick="openLightbox(['image/IMG_5545.JPG'])">
                 </div>
-                <div class="project-card-body">
+                <div class="entry-body">
                     <h3>High-Speed Autonomous Off-Road Vehicle</h3>
-                    <p class="project-date">2025 – Present</p>
-                    <p>Designed and programmed a high-speed (70 mph) autonomous off-road ground vehicle with NVIDIA Jetson Orin and Livox Mid-360 LiDAR, integrating motor controllers and sensor suites for real-time perception and navigation. Developing and training ML-based autonomous navigation policies directly on the platform.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Autonomous Systems</span>
-                        <span class="tag">NVIDIA Jetson Orin</span>
-                        <span class="tag">LiDAR</span>
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">ROS2</span>
-                        <span class="tag">Robotics</span>
-                    </div>
+                    <p class="meta">2025 – Present</p>
+                    <p>
+                        A 70 mph autonomous off-road ground vehicle built around NVIDIA Jetson Orin and Livox Mid-360 LiDAR,
+                        integrating motor controllers and sensor suites for real-time perception and navigation. Learning-based
+                        navigation policies are developed and trained directly on the platform.
+                    </p>
+                    <p class="tools">ROS2, NVIDIA Jetson Orin, LiDAR, machine learning</p>
                 </div>
             </div>
 
-            <div class="project-card" data-category="robotics">
-                <div class="project-thumbnail" onclick="openLightbox(['image/1730219516473.jpg','image/1730219406655.jpg','image/1730219376296.jpg','image/1730219329175.jpg'])">
-                    <img src="image/1730219516473.jpg" alt="FTC Robot">
-                    <span class="gallery-count">4 photos</span>
+            <div class="entry">
+                <div class="entry-media">
+                    <img src="image/1730219516473.jpg" alt="FTC robot prototype" onclick="openLightbox(['image/1730219516473.jpg','image/1730219406655.jpg','image/1730219376296.jpg','image/1730219329175.jpg'])">
+                    <span class="caption">4 photos — click to enlarge</span>
                 </div>
-                <div class="project-card-body">
+                <div class="entry-body">
                     <h3>FTC Robot Prototypes</h3>
-                    <p class="project-date">2023</p>
-                    <p>Designed, manufactured, and programmed a FIRST Tech Challenge regionals robot for Team 13948. Two full prototypes with mechanical design, electrical systems, and autonomous Java programming.</p>
-                    <div class="project-links">
-                        <a href="https://www.youtube.com/watch?v=zYdXGLUb7h4" target="_blank" class="project-link">→ Watch on YouTube</a>
-                    </div>
-                    <div class="tech-tags">
-                        <span class="tag">Java</span>
-                        <span class="tag">Raspberry Pi</span>
-                        <span class="tag">CAD</span>
-                        <span class="tag">Robotics</span>
-                    </div>
+                    <p class="meta">2023</p>
+                    <p>
+                        Two full prototypes of a FIRST Tech Challenge regionals robot for Team 13948, covering mechanical
+                        design, electrical systems, and autonomous Java programming.
+                    </p>
+                    <p class="links"><a href="https://www.youtube.com/watch?v=zYdXGLUb7h4" target="_blank" rel="noopener">Match video</a></p>
+                    <p class="tools">Java, Raspberry Pi, CAD</p>
                 </div>
             </div>
 
-            <div class="project-card" data-category="robotics">
-                <div class="project-thumbnail" onclick="openLightbox(['image/IMG_4680.jpeg'])">
-                    <img src="image/IMG_4680.jpeg" alt="Joystick-Controlled Robot Car">
+            <div class="entry">
+                <div class="entry-media">
+                    <img src="image/IMG_4680.jpeg" alt="Joystick-controlled robot car" onclick="openLightbox(['image/IMG_4680.jpeg'])">
                 </div>
-                <div class="project-card-body">
+                <div class="entry-body">
                     <h3>Joystick-Controlled Robot Car</h3>
-                    <p class="project-date">Feb 2026</p>
-                    <p>Designed, wired, and programmed an Arduino-based robot car for ME 350R Robot Mechanism Design. Integrated an L298N motor driver, DC motors, and joystick for real-time directional control with smooth speed interpolation. Focused on cable management, structural integrity, and clean chassis aesthetics.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Arduino</span>
-                        <span class="tag">Mechatronics</span>
-                        <span class="tag">C++</span>
-                        <span class="tag">Motor Control</span>
-                        <span class="tag">Embedded Systems</span>
-                        <span class="tag">Mechanical Design</span>
-                    </div>
+                    <p class="meta">February 2026</p>
+                    <p>
+                        An Arduino-based robot car built for ME 350R Robot Mechanism Design, integrating an L298N motor
+                        driver, DC motors, and a joystick for real-time directional control with smooth speed interpolation.
+                        Particular attention went to cable management, structural integrity, and chassis construction.
+                    </p>
+                    <p class="tools">Arduino, C++, motor control, mechanical design</p>
                 </div>
             </div>
 
-            <div class="project-card" data-category="embedded">
-                <div class="project-thumbnail" onclick="openLightbox(['image/IMG_3349.jpeg'])">
-                    <img src="image/IMG_3349.jpeg" alt="Space Invaders Game">
+            <div class="entry">
+                <div class="entry-media">
+                    <img src="image/IMG_5251.JPG" alt="Miniature robot leg" onclick="openLightbox(['image/IMG_5251.JPG'])">
                 </div>
-                <div class="project-card-body">
-                    <h3>Space Invaders (TI MSPM0G3507)</h3>
-                    <p class="project-date">Nov 2024 – Dec 2024</p>
-                    <p>Playable Space Invaders built from scratch on the TI MSPM0 microcontroller. Two languages, start menu, score tracking, leaderboards. Custom sprites, DAC sound output, ADC potentiometer control, ST7735 LCD display.</p>
-                    <div class="tech-tags">
-                        <span class="tag">C</span>
-                        <span class="tag">MSPM0G3507</span>
-                        <span class="tag">DAC</span>
-                        <span class="tag">ADC</span>
-                        <span class="tag">ST7735 LCD</span>
-                        <span class="tag">Embedded Systems</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="embedded">
-                <div class="project-thumbnail" onclick="openLightbox(['image/IMG_2905.jpeg','image/DA220939-A03C-4A46-84CE-131C5C20CE85.jpg','image/13ce7285-9bec-4454-b34d-256bafcb541c.mp4'])">
-                    <img src="image/IMG_2905.jpeg" alt="Traffic Light Controller">
-                    <span class="gallery-count">2 photos + video</span>
-                </div>
-                <div class="project-card-body">
-                    <h3>Traffic Light Controller (TI MSPM0G3507)</h3>
-                    <p class="project-date">Oct 2024</p>
-                    <p>4-way intersection traffic controller using finite state machines and array of structs to prioritize vehicular and pedestrian flow. Validated with Logic Analyzer and Oscilloscope.</p>
-                    <div class="tech-tags">
-                        <span class="tag">C</span>
-                        <span class="tag">MSPM0G3507</span>
-                        <span class="tag">FSM</span>
-                        <span class="tag">Embedded Systems</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="robotics">
-                <div class="project-thumbnail" onclick="openLightbox(['image/IMG_5251.JPG'])">
-                    <img src="image/IMG_5251.JPG" alt="Miniature Robot Leg">
-                </div>
-                <div class="project-card-body">
+                <div class="entry-body">
                     <h3>Miniature Robot Leg</h3>
-                    <p class="project-date">2025</p>
-                    <p>Designed and fabricated a miniature robot leg for PyTorch-based locomotion research. Testbed for training neural networks with reinforcement learning and biomimetic movement patterns.</p>
-                    <div class="tech-tags">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">Robotics</span>
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">3D Printing</span>
-                        <span class="tag">Motion Control</span>
-                    </div>
+                    <p class="meta">2025</p>
+                    <p>
+                        A miniature robot leg designed and fabricated as a testbed for PyTorch-based locomotion research,
+                        used for training neural network controllers with reinforcement learning and biomimetic gaits.
+                    </p>
+                    <p class="tools">PyTorch, reinforcement learning, 3D printing, motion control</p>
                 </div>
             </div>
 
-            <div class="project-card" data-category="robotics">
-                <div class="project-thumbnail" onclick="openLightbox(['image/IMG_5922.jpeg'])">
-                    <img src="image/IMG_5922.jpeg" alt="Slider Crank Mechanism">
+            <div class="entry">
+                <div class="entry-media">
+                    <img src="image/IMG_5922.jpeg" alt="Slider crank mechanism" onclick="openLightbox(['image/IMG_5922.jpeg'])">
                 </div>
-                <div class="project-card-body">
+                <div class="entry-body">
                     <h3>Slider Crank Mechanism</h3>
-                    <p class="project-date">2025</p>
-                    <p>Designed and analyzed a slider crank mechanism for Robot Mechanism Design. Mechanical design, kinematic analysis, and CAD modeling to efficiently convert rotational to linear motion.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Mechanical Design</span>
-                        <span class="tag">Kinematics</span>
-                        <span class="tag">CAD</span>
-                        <span class="tag">Robotics</span>
-                    </div>
+                    <p class="meta">2025</p>
+                    <p>
+                        A slider crank mechanism designed and analyzed for Robot Mechanism Design, covering mechanical
+                        design, kinematic analysis, and CAD modeling of rotational-to-linear motion conversion.
+                    </p>
+                    <p class="tools">Mechanical design, kinematics, CAD</p>
                 </div>
             </div>
 
-            <div class="project-card" data-category="software">
-                <div class="project-thumbnail" onclick="openLightbox(['image/1755705618324.jpg'])">
-                    <img src="image/1755705618324.jpg" alt="Excel output example">
+            <h2>Embedded Systems</h2>
+
+            <div class="entry">
+                <div class="entry-media">
+                    <img src="image/IMG_3349.jpeg" alt="Space Invaders on MSPM0" onclick="openLightbox(['image/IMG_3349.jpeg'])">
                 </div>
-                <div class="project-card-body">
+                <div class="entry-body">
+                    <h3>Space Invaders on the TI MSPM0G3507</h3>
+                    <p class="meta">November – December 2024</p>
+                    <p>
+                        A playable Space Invaders written from scratch for the TI MSPM0 microcontroller, with two language
+                        options, a start menu, score tracking, and leaderboards. Includes custom sprites, DAC sound output,
+                        ADC potentiometer control, and an ST7735 LCD display.
+                    </p>
+                    <p class="tools">C, MSPM0G3507, DAC, ADC, ST7735 LCD</p>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-media">
+                    <img src="image/IMG_2905.jpeg" alt="Traffic light controller" onclick="openLightbox(['image/IMG_2905.jpeg','image/DA220939-A03C-4A46-84CE-131C5C20CE85.jpg','image/13ce7285-9bec-4454-b34d-256bafcb541c.mp4'])">
+                    <span class="caption">2 photos and a video — click to enlarge</span>
+                </div>
+                <div class="entry-body">
+                    <h3>Traffic Light Controller on the TI MSPM0G3507</h3>
+                    <p class="meta">October 2024</p>
+                    <p>
+                        A four-way intersection controller built on finite state machines and an array of structs to
+                        prioritize vehicular and pedestrian flow, validated with a logic analyzer and oscilloscope.
+                    </p>
+                    <p class="tools">C, MSPM0G3507, finite state machines</p>
+                </div>
+            </div>
+
+            <h2>Software</h2>
+
+            <div class="entry">
+                <div class="entry-media">
+                    <img src="image/1755705618324.jpg" alt="Excel output of the Gmail job extractor" onclick="openLightbox(['image/1755705618324.jpg'])">
+                    <span class="caption">Example of the generated spreadsheet</span>
+                </div>
+                <div class="entry-body">
                     <h3>Gmail Job Application Extractor</h3>
-                    <p class="project-date">May 2025 – Aug 2025</p>
-                    <p>Java app that scans Gmail for job application emails, extracts company, role, and location using OpenAI GPT API, and exports structured data to Excel. Gmail API integration with robust filtering and error handling.</p>
-                    <p style="font-size:0.78rem; color:var(--text-light); font-style:italic;">↑ Example of the Excel output generated</p>
-                    <div class="project-links">
-                        <a href="https://github.com/Josemiliano/Gmail_Job_Extractor" target="_blank" class="project-link">→ GitHub</a>
-                    </div>
-                    <div class="tech-tags">
-                        <span class="tag">Java</span>
-                        <span class="tag">OpenAI API</span>
-                        <span class="tag">Gmail API</span>
-                        <span class="tag">Apache POI</span>
-                    </div>
+                    <p class="meta">May – August 2025</p>
+                    <p>
+                        A Java application that scans Gmail for job application email, extracts company, role, and location
+                        with a language model, and exports structured records to Excel, with Gmail API integration, filtering,
+                        and error handling.
+                    </p>
+                    <p class="links"><a href="https://github.com/Josemiliano/Gmail_Job_Extractor" target="_blank" rel="noopener">Source on GitHub</a></p>
+                    <p class="tools">Java, Gmail API, OpenAI API, Apache POI</p>
                 </div>
             </div>
 
-            <div class="project-card" data-category="software">
-                <div class="project-card-body">
-                    <h3>AI eBay Live MX Arbitrage Assistant</h3>
-                    <p class="project-date">May 2025 – Aug 2025</p>
-                    <p>AI system that monitors eBay Live auctions in real time, identifying underpriced items with high resale potential. NLP and image recognition for product identification, eBay API for pricing, profit margin models for bid thresholds. Generated over 5 figures in resale revenue.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Java</span>
-                        <span class="tag">eBay API</span>
-                        <span class="tag">NLP</span>
-                        <span class="tag">Data Analytics</span>
-                        <span class="tag">Excel Automation</span>
-                    </div>
+            <div class="entry no-media">
+                <div class="entry-body">
+                    <h3>eBay Live Arbitrage Assistant</h3>
+                    <p class="meta">May – August 2025</p>
+                    <p>
+                        A system that monitors eBay Live auctions in real time to identify underpriced items with resale
+                        potential, using language and image models for product identification, the eBay API for comparable
+                        pricing, and profit margin models to set bid thresholds. It generated over five figures in resale revenue.
+                    </p>
+                    <p class="tools">Java, eBay API, NLP, data analytics</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="activities">
-        <h2>Activities & Athletics</h2>
-        <p class="section-subtitle">Beyond Engineering</p>
-        
-        <div class="sports-grid">
-            <div class="sport-card">
-                <div class="sport-icon">🥊</div>
-                <h3>Longhorn Boxing</h3>
-                <p>UT Austin Club Sport • Current</p>
+        <section id="education">
+            <h1>Education</h1>
+
+            <div class="entry">
+                <div class="entry-media">
+                    <img src="image/ut ece.png" alt="UT Austin Electrical and Computer Engineering">
+                </div>
+                <div class="entry-body">
+                    <h3>The University of Texas at Austin</h3>
+                    <p class="meta">B.S. Electrical and Computer Engineering, Minor in Robotics &middot; August 2023 – May 2027</p>
+                    <ul class="plain">
+                        <li>Technical core in embedded systems and computer architecture.</li>
+                        <li>Texas Robotics (teaching assistant and peer mentor), UT SHPE (intramural sports chair), IEEE (member), Longhorn Boxing (board).</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="sport-card">
-                <div class="sport-icon">&#x1F3C0;</div>
-                <h3>Basketball</h3>
-                <p>UT Austin Intramurals &bull; Current</p>
+            <div class="entry no-media">
+                <div class="entry-body">
+                    <h3>El Paso Community College</h3>
+                    <p class="meta">A.A. Multidisciplinary Studies &middot; August 2020 – May 2023</p>
+                    <p>Completed an associate's degree concurrently with high school, graduating with over 60 college credits.</p>
+                </div>
             </div>
 
-            <div class="sport-card">
-                <div class="sport-icon">&#x1F3BE;</div>
-                <h3>Varsity Tennis</h3>
-                <p>Cathedral High School • 2019-2023</p>
+            <div class="entry no-media">
+                <div class="entry-body">
+                    <h3>Cathedral High School</h3>
+                    <p class="meta">High School Diploma, GPA 4.4 &middot; August 2019 – May 2023 &middot; El Paso, TX</p>
+                    <ul class="plain">
+                        <li>FIRST Robotics co-founder and vice-captain.</li>
+                        <li>Chinese Club founder and vice-president.</li>
+                        <li>Student body secretary and marketer.</li>
+                        <li>National Science Honor Society service manager.</li>
+                        <li>Varsity tennis, cross country, and band.</li>
+                    </ul>
+                </div>
             </div>
+        </section>
 
-            <div class="sport-card">
-                <div class="sport-icon">🚵</div>
-                <h3>Mountain Biking</h3>
-                <p>Enthusiast</p>
-            </div>
+        <section id="activities">
+            <h1>Activities</h1>
+            <ul class="activities-list">
+                <li>Longhorn Boxing, UT Austin club sport (board member, current)</li>
+                <li>Basketball, UT Austin intramurals (current)</li>
+                <li>Varsity tennis, Cathedral High School (2019–2023)</li>
+                <li>Band, Cathedral High School (2019–2023)</li>
+                <li>Mountain biking</li>
+                <li>Golf</li>
+            </ul>
+        </section>
+    </main>
 
-            <div class="sport-card">
-                <div class="sport-icon">⛳</div>
-                <h3>Golf</h3>
-                <p>Enthusiast</p>
-            </div>
-
-            <div class="sport-card">
-                <div class="sport-icon">🎺</div>
-                <h3>Band</h3>
-                <p>Cathedral High School • 2019-2023</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://linkedin.com/in/josemiliano-cohen/" target="_blank">LinkedIn</a>
-                <a href="https://github.com/josemiliano" target="_blank">GitHub</a>
-                <a href="mailto:j6cohen@gmail.com">Email</a>
-            </div>
-            <p>&copy; 2025 Josemiliano Cohen. All rights reserved.</p>
-        </div>
+    <footer class="container">
+        <p class="footer-links">
+            <a href="mailto:j6cohen@gmail.com">Email</a>
+            <a href="https://linkedin.com/in/josemiliano-cohen/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/josemiliano" target="_blank" rel="noopener">GitHub</a>
+        </p>
+        <p>&copy; 2026 Josemiliano Cohen</p>
     </footer>
 
-    <!-- Lightbox -->
     <div id="lightbox" class="lightbox" onclick="closeLightboxOnBackdrop(event)">
-        <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
-        <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)">&#x2039;</button>
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&#x2715;</button>
+        <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)" aria-label="Previous">&#x2039;</button>
         <div class="lightbox-content">
             <img id="lightbox-img" src="" alt="" style="display:none;">
-            <video id="lightbox-video" controls style="display:none; max-width:90vw; max-height:82vh; border-radius:8px;"></video>
+            <video id="lightbox-video" controls style="display:none;"></video>
         </div>
-        <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)">&#x203A;</button>
+        <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)" aria-label="Next">&#x203A;</button>
         <div class="lightbox-counter" id="lightbox-counter"></div>
     </div>
 
     <script>
-        // Filter
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                const filter = this.dataset.filter;
-                document.querySelectorAll('.project-card, .featured-card').forEach(card => {
-                    const match = filter === 'all' || card.dataset.category === filter;
-                    card.classList.toggle('hidden', !match);
-                });
-                const fp = document.querySelector('.featured-projects');
-                const anyVisible = fp.querySelector('.featured-card:not(.hidden)');
-                fp.style.display = anyVisible ? 'grid' : 'none';
-            });
-        });
+        // Image and video lightbox
+        let lbItems = [], lbIndex = 0;
 
-        // Lightbox
-        let lbImages = [], lbIndex = 0;
-
-        function openLightbox(images, startIndex) {
-            lbImages = images;
+        function openLightbox(items, startIndex) {
+            lbItems = items;
             lbIndex = startIndex || 0;
             showLightboxItem();
             document.getElementById('lightbox').classList.add('open');
@@ -1450,10 +680,10 @@
         function showLightboxItem() {
             const img = document.getElementById('lightbox-img');
             const vid = document.getElementById('lightbox-video');
-            const src = lbImages[lbIndex];
-            const isVideo = /\.(mp4|webm|ogg)$/i.test(src);
-            if (isVideo) {
+            const src = lbItems[lbIndex];
+            if (/\.(mp4|webm|ogg)$/i.test(src)) {
                 img.style.display = 'none';
+                img.src = '';
                 vid.style.display = 'block';
                 vid.src = src;
             } else {
@@ -1462,18 +692,19 @@
                 img.style.display = 'block';
                 img.src = src;
             }
-            const counter = document.getElementById('lightbox-counter');
-            counter.textContent = lbImages.length > 1 ? `${lbIndex + 1} / ${lbImages.length}` : '';
-            const showNav = lbImages.length > 1;
-            document.querySelector('.lightbox-prev').style.display = showNav ? 'flex' : 'none';
-            document.querySelector('.lightbox-next').style.display = showNav ? 'flex' : 'none';
+            document.getElementById('lightbox-counter').textContent =
+                lbItems.length > 1 ? (lbIndex + 1) + ' / ' + lbItems.length : '';
+            const nav = lbItems.length > 1 ? 'block' : 'none';
+            document.querySelector('.lightbox-prev').style.display = nav;
+            document.querySelector('.lightbox-next').style.display = nav;
         }
 
         function closeLightbox() {
             document.getElementById('lightbox').classList.remove('open');
             document.body.style.overflow = '';
             const vid = document.getElementById('lightbox-video');
-            vid.pause(); vid.src = '';
+            vid.pause();
+            vid.src = '';
         }
 
         function closeLightboxOnBackdrop(e) {
@@ -1481,7 +712,7 @@
         }
 
         function lightboxNav(dir) {
-            lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+            lbIndex = (lbIndex + dir + lbItems.length) % lbItems.length;
             showLightboxItem();
         }
 
@@ -1492,42 +723,22 @@
             if (e.key === 'ArrowRight') lightboxNav(1);
         });
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+        // Mark the nav tab for the section currently in view
+        const navLinks = new Map(
+            [...document.querySelectorAll('nav a')].map(a => [a.getAttribute('href').slice(1), a])
+        );
 
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        const sections = document.querySelectorAll('section');
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    navLinks.forEach(a => a.classList.remove('active'));
+                    const link = navLinks.get(entry.target.id);
+                    if (link) link.classList.add('active');
                 }
             });
-        }, observerOptions);
+        }, { rootMargin: '-60px 0px -70% 0px' });
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
+        document.querySelectorAll('main section').forEach(s => observer.observe(s));
     </script>
 </body>
 </html>
