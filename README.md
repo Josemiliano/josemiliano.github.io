@@ -1,3 +1,2 @@
 # josemiliano.github.io
-Personal website  
-josemiliano.com
+[Personal Website](https://josemiliano.com)
